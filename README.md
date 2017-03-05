@@ -7,7 +7,6 @@ Requirements
 ------------
 - hMailServer with webserver and PHP >= 5.3.0
 - Requires PHP COM (Windows only)
-- jqueryui plugin
 
 How to install
 --------------
@@ -23,7 +22,7 @@ by included drivers. Just pass driver name in 'hms_forwarding_driver' option.
 **hMailServer (hmail)**
 
 Requires PHP COM (Windows only). For access to hMail server on remote host you'll
-need to define 'hms_autoreply_remote_dcom' and 'hms_autoreply_remote_server'.
+need to define 'hms_forwarding_remote_dcom' and 'hms_forwarding_remote_server'.
 See config.inc.php.dist file for more info.
 
 **hMailServer Remote (hmail_remote)**
