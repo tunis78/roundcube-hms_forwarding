@@ -1,0 +1,30 @@
+<?php
+
+// hMailServer Forwarding Plugin options
+// -----------------------
+// A driver to use for forwarding change. Default: "hmail".
+// See README file for list of supported driver names.
+$config['hms_forwarding_driver'] = 'hmail';
+
+// hmail Driver options
+// -----------------------
+// Remote hMailServer configuration
+// true:  hMailServer is on a remote box (php.ini: com.allow_dcom = true)
+// false: hMailServer is on same box as PHP
+$config['hms_forwarding_remote_dcom'] = false;
+// Windows credentials
+$config['hms_forwarding_remote_server'] = array(
+    'Server'   => 'localhost',      // hostname or ip address
+    'Username' => 'administrator',  // windows username
+    'Password' => 'password'        // windows user password
+);
+
+// hmail_remote Driver options
+// -----------------------
+// Remote configuration of hMailServer
+// Copy hm_rcforwarding.php to hMailServer.
+// Change $remote_ip in hm_rcforwarding.php to Roundcube server ip-address.
+// Makesure that dcom working.
+// Url to hm_rcforwarding.php.
+$config['hms_forwarding_remote_url'] = 'http://hmailserver/PHPWebAdmin/hm_rcforwarding.php';
+
