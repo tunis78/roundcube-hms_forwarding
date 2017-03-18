@@ -3,7 +3,7 @@
     "type": "roundcube-plugin",
     "description": "hMailServer Forwarding Change for Roundcube. Plugin adds a possibility to change users forwarding using two methods (drivers) via Settings/Forwarding tab.",
     "license": "GPLv3+",
-    "version": "1.0",
+    "version": "1.1",
     "authors": [
         {
             "name": "Andreas Tunberg",

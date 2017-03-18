@@ -10,6 +10,7 @@ $labels['address'] = 'Address';
 $labels['keeporiginalmessage'] = 'Keep original message';
 
 $messages = array();
+$messages['novalidemailaddress'] = 'No valid email address.';
 $messages['successfullyupdated'] = 'Forwarding has successfully update.';
 $messages['internalerror'] = 'Error with selected action.';
 //$messages['connecterror'] = $messages['internalerror'] . ' Connection error.';

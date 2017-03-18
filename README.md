@@ -33,6 +33,10 @@ See config.inc.php.dist file for more info.
 
 Changelog
 ---------
+Version 1.1 (2017-03-18)
+- E-mail address validation
+- Some CSS and design change
+
 Version 1.0 (2017-03-05)
 - First release
 

@@ -7,6 +7,7 @@ $labels['enabled'] = 'Aktiv';
 $labels['address'] = 'Adress';
 $labels['keeporiginalmessage'] = 'Behåll orginalmeddelandet';
 
+$messages['novalidemailaddress'] = 'Ingen giltig e-mejladress.';
 $messages['successfullyupdated'] = 'Vidarebefodringen har uppdaterats.';
 $messages['internalerror'] = 'Fel uppstod i vald åtgärd.';
 //$messages['connecterror'] = $messages['internalerror'] . ' Uppkopplingsfel.';

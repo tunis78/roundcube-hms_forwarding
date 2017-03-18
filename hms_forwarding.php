@@ -3,7 +3,7 @@
 /**
  * hMailServer Forwarding Plugin for Roundcube
  *
- * @version 1.0
+ * @version 1.1
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
  * Copyright (C) 2017, Andreas Tunberg
@@ -98,6 +98,9 @@ class hms_forwarding extends rcube_plugin
             'keeporiginal' => rcube_utils::get_input_value('_keeporiginal', rcube_utils::INPUT_POST),
         );
 
+        if(!$dataToSave['address'])
+            $dataToSave['enabled'] = 0;
+
         if (!($result = $this->_save($dataToSave))) {
             $this->rc->output->command('display_message', $this->gettext('successfullyupdated'), 'confirmation');
         }
@@ -127,7 +130,7 @@ class hms_forwarding extends rcube_plugin
             return;
         }
 
-        $table = new html_table(array('cols' => 2));
+        $table = new html_table(array('cols' => 2, 'class' => 'propform'));
 
         $field_id = 'enabled';
         $input_enabled = new html_checkbox(array (
@@ -169,16 +172,18 @@ class hms_forwarding extends rcube_plugin
         $form = $this->rc->output->form_tag(array(
             'id'     => 'forwarding-form',
             'name'   => 'forwarding-form',
+            'class'  => 'propform',
             'method' => 'post',
             'action' => './?_task=settings&_action=plugin.forwarding-save',
-        ), $table->show() . html::p(null, $submit_button));
+        ), $table->show());
 
-        $out = html::div(array('class' => 'box'),
+        $out = html::div(array('class' => 'box hms'),
             html::div(array('id' => 'prefs-title', 'class' => 'boxtitle'), $this->gettext('editforwarding'))
-            . html::div(array('class' => 'boxcontent'),
-                $form));
+            . html::div(array('class' => 'boxcontent'), $form)
+            . html::div(array('class' => 'footerleft formbuttons'), $submit_button));
 
         $this->rc->output->add_gui_object('forwardingform', 'forwarding-form');
+        $this->rc->output->add_label('hms_forwarding.novalidemailaddress');
 
         $this->include_script('hms_forwarding.js');
 

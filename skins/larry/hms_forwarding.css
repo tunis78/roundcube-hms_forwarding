@@ -7,3 +7,12 @@
 #settings-sections .forwarding.selected a {
     background-position: 6px -23px;
 }
+
+.hms.box {
+    height: 100%;
+}
+
+.hms.box .boxcontent {
+    overflow: auto;
+    max-height: calc(100% - 86px);
+}
