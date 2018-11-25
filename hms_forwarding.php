@@ -3,10 +3,10 @@
 /**
  * hMailServer Forwarding Plugin for Roundcube
  *
- * @version 1.1
+ * @version 1.2
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
- * Copyright (C) 2017, Andreas Tunberg
+ * Copyright (C) 2018, Andreas Tunberg
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -164,8 +164,7 @@ class hms_forwarding extends rcube_plugin
 
         $submit_button = $this->rc->output->button(array(
                 'command' => 'plugin.forwarding-save',
-                'type'    => 'input',
-                'class'   => 'button mainaction',
+                'class'   => 'button mainaction submit',
                 'label'   => 'save'
         ));
 
@@ -177,9 +176,9 @@ class hms_forwarding extends rcube_plugin
             'action' => './?_task=settings&_action=plugin.forwarding-save',
         ), $table->show());
 
-        $out = html::div(array('class' => 'box hms'),
-            html::div(array('id' => 'prefs-title', 'class' => 'boxtitle'), $this->gettext('editforwarding'))
-            . html::div(array('class' => 'boxcontent'), $form)
+        $out = html::div(array('id' => 'prefs-title', 'class' => 'boxtitle'), $this->gettext('editforwarding'))
+            . html::div(array('class' => 'hms box formcontainer scroller'),
+                html::div(array('class' => 'boxcontent formcontent'), $form)
             . html::div(array('class' => 'footerleft formbuttons'), $submit_button));
 
         $this->rc->output->add_gui_object('forwardingform', 'forwarding-form');

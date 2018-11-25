@@ -33,6 +33,10 @@ See config.inc.php.dist file for more info.
 
 Changelog
 ---------
+Version 1.2 (2018-11-04)
+- Added the new elastic skin
+- Some changes to get it work with new elastic skin
+
 Version 1.1 (2017-03-18)
 - E-mail address validation
 - Some CSS and design change

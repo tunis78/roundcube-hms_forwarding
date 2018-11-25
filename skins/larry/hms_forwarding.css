@@ -8,6 +8,10 @@
     background-position: 6px -23px;
 }
 
+#forwarding-form input {
+    width: auto;
+}
+
 .hms.box {
     height: 100%;
 }

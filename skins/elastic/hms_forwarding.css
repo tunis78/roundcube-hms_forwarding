@@ -1,0 +1,3 @@
+.listing.iconized li.forwarding > a::before {
+    content: "\f064";
+}
