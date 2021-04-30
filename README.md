@@ -33,6 +33,10 @@ See config.inc.php.dist file for more info.
 
 Changelog
 ---------
+Version 1.3 (2021-04-30)
+- E-mail address validation limit to one e-mail address
+- Deactivate if no address exist failed
+
 Version 1.2 (2018-11-04)
 - Added the new elastic skin
 - Some changes to get it work with new elastic skin

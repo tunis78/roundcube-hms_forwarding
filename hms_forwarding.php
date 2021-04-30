@@ -99,7 +99,7 @@ class hms_forwarding extends rcube_plugin
         );
 
         if(!$dataToSave['address'])
-            $dataToSave['enabled'] = 0;
+            $dataToSave['enabled'] = null;
 
         if (!($result = $this->_save($dataToSave))) {
             $this->rc->output->command('display_message', $this->gettext('successfullyupdated'), 'confirmation');
