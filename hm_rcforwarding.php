@@ -53,13 +53,24 @@ $domain = $temparr[1];
 $obApp->Authenticate($email, $password);
 try {
 	$obAccount = $obApp->Domains->ItemByName($domain)->Accounts->ItemByAddress($email);
-
+	$obDomain = $obApp->Domains->ItemByName($domain);
+	$obLists = $obDomain->DistributionLists();
+	$obDistributionLists = $obDomain->DistributionLists;
+	$Count = $obLists->Count();
+	$exludedaddresses = array();
+	if ($Count>0) {
+		for ($i=0; $i<$Count; $i++) {
+			$obList = $obDistributionLists->Item($i);
+			$exludedaddresses[] = $obList->Address;
+		}
+	}
 	switch($action){
 		case 'forwarding_load':
 			$fdata = array(
 				'enabled'      => $obAccount->ForwardEnabled ?: 0,
 				'address'      => $obAccount->ForwardAddress,
-				'keeporiginal' => $obAccount->ForwardKeepOriginal ?: 0
+				'keeporiginal' => $obAccount->ForwardKeepOriginal ?: 0,
+				'exludedaddresses' => $exludedaddresses
 			);
 			sendResult($fdata);
 		case 'forwarding_save':

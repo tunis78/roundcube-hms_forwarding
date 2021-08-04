@@ -17,7 +17,7 @@
  
 window.rcmail && rcmail.addEventListener('init', function(evt) {
 
-    rcmail.register_command('plugin.forwarding-save', function() {
+	rcmail.register_command('plugin.forwarding-save', function() {
         var email = rcmail.gui_objects.forwardingform._address.value;
         if (email.length > 0 && !rcube_check_email(email, false)) {
             rcmail.display_message(rcmail.get_label('hms_forwarding.novalidemailaddress'), 'error');
@@ -26,4 +26,10 @@ window.rcmail && rcmail.addEventListener('init', function(evt) {
         rcmail.set_busy(true, 'loading');
         rcmail.gui_objects.forwardingform.submit();
     },true);
+	
+	var disabled = document.getElementById("enabled").disabled;
+	if (disabled) {
+		var btn = document.querySelector("[type=button]");
+		btn.setAttribute("disabled", "");
+	};
 });

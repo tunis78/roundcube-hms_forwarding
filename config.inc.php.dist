@@ -28,3 +28,16 @@ $config['hms_forwarding_remote_server'] = array(
 // Url to hm_rcforwarding.php.
 $config['hms_forwarding_remote_url'] = 'http://hmailserver/PHPWebAdmin/hm_rcforwarding.php';
 
+// array of excluded addresses
+$config['hms_forwarding_excluded_addresses'] = array(
+	//'address@domain1.com',
+	//'address@domain2.com',
+);
+
+// array of excluded domains
+$config['hms_forwarding_excluded_domains'] = array(
+	//'domain3.com',
+	//'domain4.com'
+);
+
+$config['hms_forwarding_exclude_distributionlists'] = false;

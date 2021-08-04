@@ -98,15 +98,28 @@ class hms_forwarding extends rcube_plugin
             'keeporiginal' => rcube_utils::get_input_value('_keeporiginal', rcube_utils::INPUT_POST),
         );
 
+		// if disabled save all current data
+		$currentData = $this->_load(array('action' => 'forwarding_load'));
+		if(!$dataToSave['enabled'] && !$dataToSave['address'] && !$dataToSave['keeporiginal'])
+		{
+			$dataToSave['enabled'] = $currentData['enabled'];
+			$dataToSave['address'] = $currentData['address'];
+			$dataToSave['keeporiginal'] = $currentData['keeporiginal'];
+		}
+
         if(!$dataToSave['address'])
             $dataToSave['enabled'] = null;
 
+		if ($dataToSave['address'] && !rcube_utils::check_email($dataToSave['address']))
+			$this->rc->output->command('display_message', $this->gettext('novalidemailaddress'), 'error');
+		else {
         if (!($result = $this->_save($dataToSave))) {
             $this->rc->output->command('display_message', $this->gettext('successfullyupdated'), 'confirmation');
         }
         else {
             $this->rc->output->command('display_message', $result, 'error');
         }
+		}		
 
         $this->register_handler('plugin.body', array($this, 'forwarding_form'));
 
@@ -116,6 +129,19 @@ class hms_forwarding extends rcube_plugin
 
     function forwarding_form()
     {
+		$config = rcmail::get_instance()->config;
+		
+		// check for excluded domains and addresses
+		$disabled = false;
+		$username = $this->rc->get_user_name();
+		$domain = explode('@', $username);
+		if (in_array($username, $config->get('hms_forwarding_excluded_addresses'))) {
+			$disabled = true;
+		}
+		elseif (in_array($domain[1], $config->get('hms_forwarding_excluded_domains'))) {
+			$disabled = true;
+		}	
+		
         $currentData = $this->_load(array('action' => 'forwarding_load'));
 
         if (!is_array($currentData)) {
@@ -130,11 +156,17 @@ class hms_forwarding extends rcube_plugin
             return;
         }
 
+		// check if forward address is distributionlist
+		if ($config->get('hms_forwarding_exclude_distributionlists') && in_array($currentData['address'], $currentData['exludedaddresses'])) {
+			$disabled = true;
+		}
+
         $table = new html_table(array('cols' => 2, 'class' => 'propform'));
 
         $field_id = 'enabled';
         $input_enabled = new html_checkbox(array (
                 'name'  => '_enabled',
+				'disabled' => $disabled ? 'disabled' : '',
                 'id'    => $field_id,
                 'value' => 1
         ));
@@ -144,7 +176,8 @@ class hms_forwarding extends rcube_plugin
 
         $field_id = 'address';
         $input_address = new html_inputfield(array (
-                'type'      => 'text',
+				'type'      => 'email',
+				'disabled' => $disabled ? 'disabled' : '',
                 'name'      => '_address',
                 'id'        => $field_id,
                 'maxlength' => 192
@@ -156,6 +189,7 @@ class hms_forwarding extends rcube_plugin
         $field_id = 'keeporiginal';
         $input_keeporiginal = new html_checkbox(array (
                 'name'  => '_keeporiginal',
+				'disabled' => $disabled ? 'disabled' : '',
                 'id'    => $field_id,
                 'value' => 1
         ));            
