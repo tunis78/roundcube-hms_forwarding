@@ -3,10 +3,10 @@
 /**
  * hMailserver forwarding driver
  *
- * @version 1.0
+ * @version 1.1
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
- * Copyright (C) 2017, Andreas Tunberg
+ * Copyright (C) 2026, Andreas Tunberg
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -77,13 +77,15 @@ class rcube_hmail_forwarding
                     $fdata = array(
                         'enabled'      => $obAccount->ForwardEnabled ?: 0,
                         'address'      => $obAccount->ForwardAddress,
-                        'keeporiginal' => $obAccount->ForwardKeepOriginal ?: 0
-                    );   
+                        'keeporiginal' => $obAccount->ForwardKeepOriginal ?: 0,
+                        'abortspam'    => $obAccount->ForwardAbortSpamFlagged ?: 0
+                    );
                     return $fdata;
                 case 'forwarding_save':
-                    $obAccount->ForwardEnabled      = $data['enabled'] == null ? 0 : 1;
-                    $obAccount->ForwardAddress      = $data['address'];
-                    $obAccount->ForwardKeepOriginal = $data['keeporiginal'] == null ? 0 : 1;
+                    $obAccount->ForwardEnabled          = $data['enabled'] == null ? 0 : 1;
+                    $obAccount->ForwardAddress          = $data['address'];
+                    $obAccount->ForwardKeepOriginal     = $data['keeporiginal'] == null ? 0 : 1;
+                    $obAccount->ForwardAbortSpamFlagged = $data['abortspam'] == null ? 0 : 1;
                     $obAccount->Save();
                     return HMS_SUCCESS;
             }

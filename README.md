@@ -5,7 +5,7 @@ methods (drivers) via Settings/Forwarding tab.
 
 Requirements
 ------------
-- hMailServer with webserver and PHP >= 5.3.0
+- hMailServer >= 5.7 with webserver and PHP >= 5.3.0
 - Requires PHP COM (Windows only)
 
 How to install
@@ -33,6 +33,9 @@ See config.inc.php.dist file for more info.
 
 Changelog
 ---------
+Version 1.4 (2026-10-28)
+- Updated to hMailServer 5.7
+
 Version 1.3 (2021-04-30)
 - E-mail address validation limit to one e-mail address
 - Deactivate if no address exist failed

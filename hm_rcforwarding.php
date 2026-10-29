@@ -3,10 +3,10 @@
 /**
  * hMailserver remote forwarding changer
  *
- * @version 1.0
+ * @version 1.1
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
- * Copyright (C) 2017, Andreas Tunberg
+ * Copyright (C) 2026, Andreas Tunberg
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -59,13 +59,15 @@ try {
 			$fdata = array(
 				'enabled'      => $obAccount->ForwardEnabled ?: 0,
 				'address'      => $obAccount->ForwardAddress,
-				'keeporiginal' => $obAccount->ForwardKeepOriginal ?: 0
+				'keeporiginal' => $obAccount->ForwardKeepOriginal ?: 0,
+				'abortspam'    => $obAccount->ForwardAbortSpamFlagged ?: 0
 			);
 			sendResult($fdata);
 		case 'forwarding_save':
-			$obAccount->ForwardEnabled      = isset($_POST['enabled']) ?: 0;
-			$obAccount->ForwardAddress      = $_POST['address'];
-			$obAccount->ForwardKeepOriginal = isset($_POST['keeporiginal']) ?: 0;
+			$obAccount->ForwardEnabled          = isset($_POST['enabled']) ?: 0;
+			$obAccount->ForwardAddress          = $_POST['address'];
+			$obAccount->ForwardKeepOriginal     = isset($_POST['keeporiginal']) ?: 0;
+			$obAccount->ForwardAbortSpamFlagged = isset($_POST['abortspam']) ?: 0;
 			$obAccount->Save();
 			sendResult(HMS_SUCCESS);
 	}

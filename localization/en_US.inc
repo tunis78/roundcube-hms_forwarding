@@ -8,6 +8,7 @@ $labels['editforwarding'] = 'Edit forwarding';
 $labels['enabled'] = 'Enabled';
 $labels['address'] = 'Address';
 $labels['keeporiginalmessage'] = 'Keep original message';
+$labels['abortspam'] = 'Abort on messages marked as spam';
 
 $messages = array();
 $messages['novalidemailaddress'] = 'No valid email address.';

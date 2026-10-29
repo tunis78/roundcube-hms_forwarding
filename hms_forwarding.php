@@ -3,7 +3,7 @@
 /**
  * hMailServer Forwarding Plugin for Roundcube
  *
- * @version 1.2
+ * @version 1.3
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
  * Copyright (C) 2018, Andreas Tunberg
@@ -96,6 +96,7 @@ class hms_forwarding extends rcube_plugin
             'enabled'      => rcube_utils::get_input_value('_enabled', rcube_utils::INPUT_POST),
             'address'      => rcube_utils::get_input_value('_address', rcube_utils::INPUT_POST),
             'keeporiginal' => rcube_utils::get_input_value('_keeporiginal', rcube_utils::INPUT_POST),
+            'abortspam'    => rcube_utils::get_input_value('_abortspam', rcube_utils::INPUT_POST)
         );
 
         if(!$dataToSave['address'])
@@ -161,6 +162,15 @@ class hms_forwarding extends rcube_plugin
         ));            
         $table->add('title', html::label($field_id, rcube::Q($this->gettext('keeporiginalmessage'))));
         $table->add(null, $input_keeporiginal->show($currentData['keeporiginal']));
+
+        $field_id = 'abortspam';
+        $input_abortspam = new html_checkbox(array (
+                'name'  => '_abortspam',
+                'id'    => $field_id,
+                'value' => 1
+        ));
+        $table->add('title', html::label($field_id, rcube::Q($this->gettext('abortspam'))));
+        $table->add(null, $input_abortspam->show($currentData['abortspam']));
 
         $submit_button = $this->rc->output->button(array(
                 'command' => 'plugin.forwarding-save',

@@ -6,6 +6,7 @@ $labels['editforwarding'] = 'Ändra vidarebefodring';
 $labels['enabled'] = 'Aktiv';
 $labels['address'] = 'Adress';
 $labels['keeporiginalmessage'] = 'Behåll orginalmeddelandet';
+$labels['abortspam'] = 'Avbryt vid meddelanden markerade som skräppost';
 
 $messages['novalidemailaddress'] = 'Ingen giltig e-mejladress.';
 $messages['successfullyupdated'] = 'Vidarebefodringen har uppdaterats.';
