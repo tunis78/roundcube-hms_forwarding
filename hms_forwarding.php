@@ -3,7 +3,7 @@
 /**
  * hMailServer Forwarding Plugin for Roundcube
  *
- * @version 1.3
+ * @version 1.5
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
  * Copyright (C) 2018, Andreas Tunberg
