@@ -13,6 +13,6 @@ $messages['successfullyupdated'] = 'Vidarebefodringen har uppdaterats.';
 $messages['internalerror'] = 'Fel uppstod i vald åtgärd.';
 //$messages['connecterror'] = $messages['internalerror'] . ' Uppkopplingsfel.';
 $messages['loaderror'] = 'Kunde inte ladda vidarebefodringen.';
-$messages['loadconnecterror'] = $messages['loadinternalerror'] . ' Uppkopplingsfel.';
+$messages['loadconnecterror'] = $messages['loaderror'] . ' Uppkopplingsfel.';
 $messages['updateerror'] = 'Kunde inte uppdatera vidarebefodringen.';
 $messages['updateconnecterror'] = $messages['updateerror'] . ' Connection error.';

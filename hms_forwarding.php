@@ -3,7 +3,7 @@
 /**
  * hMailServer Forwarding Plugin for Roundcube
  *
- * @version 1.6
+ * @version 1.7
  * @author Andreas Tunberg <andreas@tunberg.com>
  *
  * Copyright (C) 2026, Andreas Tunberg
@@ -22,9 +22,11 @@
  * along with this program. If not, see http://www.gnu.org/licenses/.
  */
 
-define('HMS_ERROR', 1);
-define('HMS_CONNECT_ERROR', 2);
-define('HMS_SUCCESS', 0);
+if (!defined('HMS_ERROR')) {
+    define('HMS_ERROR', 1);
+    define('HMS_CONNECT_ERROR', 2);
+    define('HMS_SUCCESS', 0);
+}
 
 /**
  * Change hMailServer forwarding plugin
